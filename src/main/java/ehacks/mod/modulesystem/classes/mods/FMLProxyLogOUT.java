@@ -29,7 +29,7 @@ public class FMLProxyLogOUT extends Module {
 
     @Override
     public String getModName() {
-        return "";
+        return "Forge";
     }
 
     @Override

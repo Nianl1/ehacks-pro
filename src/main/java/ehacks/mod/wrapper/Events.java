@@ -188,7 +188,11 @@ public class Events {
     public void onGuiScreenDraw(GuiScreenEvent.DrawScreenEvent.Pre event) {
         if (event.getGui() instanceof GuiMainMenu) {
             GuiMainMenu mainMenu = (GuiMainMenu) event.getGui();
-            ReflectionHelper.setPrivateValue(GuiMainMenu.class, mainMenu, "Fucked by radioegor146, ported by Iterator", Mappings.splashText);
+            try { // Крашит при запуске из градла - хуй знает почему.
+                ReflectionHelper.setPrivateValue(GuiMainMenu.class, mainMenu, "Fucked by radioegor146, ported by Iterator", Mappings.splashText);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
