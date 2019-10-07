@@ -7,6 +7,10 @@ import ehacks.mod.config.ConfigurationManager;
 import ehacks.mod.modulesystem.classes.keybinds.HideCheatKeybind;
 import ehacks.mod.modulesystem.classes.keybinds.OpenConsoleKeybind;
 import ehacks.mod.modulesystem.handler.EHacksGui;
+import static ehacks.mod.gui.window.WindowCheckVanish.cvLastUpdate;
+import static ehacks.mod.gui.window.WindowCheckVanish.cvThreadStarted;
+import static ehacks.mod.gui.window.WindowCheckVanish.lpLastUpdate;
+import static ehacks.mod.gui.window.WindowCheckVanish.lpThreadStarted;
 import ehacks.mod.util.GLUtils;
 import ehacks.mod.util.InteropUtils;
 import ehacks.mod.util.Mappings;
@@ -93,6 +97,14 @@ public class Events {
         } else {
             ready = false;
         }
+
+        if (!cvThreadStarted.get()) {
+            cvLastUpdate++;
+        }
+        if (!lpThreadStarted.get()) {
+            lpLastUpdate++;
+        }
+
         try {
             Wrapper.INSTANCE.world().loadedEntityList.stream().filter((entity) -> (entity instanceof EntityPlayer)).map((entity) -> (EntityPlayer) entity).forEachOrdered((ep1) -> {
                 EntityPlayer ep = (EntityPlayer) ep1;
@@ -188,7 +200,7 @@ public class Events {
     public void onGuiScreenDraw(GuiScreenEvent.DrawScreenEvent.Pre event) {
         if (event.getGui() instanceof GuiMainMenu) {
             GuiMainMenu mainMenu = (GuiMainMenu) event.getGui();
-            try { // Крашит при запуске из градла - хуй знает почему.
+            try {
                 ReflectionHelper.setPrivateValue(GuiMainMenu.class, mainMenu, "Fucked by radioegor146, ported by Iterator", Mappings.splashText);
             } catch (Exception e) {
                 e.printStackTrace();

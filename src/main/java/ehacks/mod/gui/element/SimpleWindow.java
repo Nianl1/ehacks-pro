@@ -185,6 +185,7 @@ public class SimpleWindow implements IIncludable, IClickable {
         this.height = cHeight + 15;
     }
 
+
     public boolean isExtended() {
         return this.isExtended;
     }
