@@ -98,6 +98,7 @@ public class WindowCheckVanish
                 lastCvResult = response.getPlayers().getOnline();
                 //YouAlwaysWinClickGui.log("[PacketQueryCV] Updated");
             } catch (Exception e) {
+                e.printStackTrace();
                 lastCvResult = -1;
                 //YouAlwaysWinClickGui.log("[PacketQueryCV] Error on updating: " + e.getMessage());
             }

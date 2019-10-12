@@ -3,9 +3,7 @@ package ehacks.mod.modulesystem.handler;
 import ehacks.mod.api.Module;
 import ehacks.mod.api.ModuleController;
 import ehacks.mod.modulesystem.classes.keybinds.*;
-import ehacks.mod.modulesystem.classes.mods.FMLProxyLogIN;
-import ehacks.mod.modulesystem.classes.mods.FMLProxyLogOUT;
-import ehacks.mod.modulesystem.classes.mods.MCFMDoorMat;
+import ehacks.mod.modulesystem.classes.mods.*;
 
 public class ModuleManagement {
 
@@ -26,6 +24,9 @@ public class ModuleManagement {
     public void initModules() {
         this.add(new FMLProxyLogIN());
         this.add(new FMLProxyLogOUT());
+        this.add(new MinePacketLogIN());
+        this.add(new MinePacketLogOUT());
+
         this.add(new MCFMDoorMat());
 
         this.add(new GiveKeybind());
