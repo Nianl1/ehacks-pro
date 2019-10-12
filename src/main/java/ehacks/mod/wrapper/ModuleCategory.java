@@ -3,6 +3,7 @@ package ehacks.mod.wrapper;
 public enum ModuleCategory {
     NONE("None"),
     BEUHACKS("BeuHacks"),
+    PACKETLOGGERS("PacketLoggers"),
     KEYBIND("Keybind");
 
     private final String name;

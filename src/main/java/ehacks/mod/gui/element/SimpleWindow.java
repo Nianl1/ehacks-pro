@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ehacks.mod.gui.element;
 
 import ehacks.mod.api.IIncludable;
@@ -14,13 +9,12 @@ import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Keyboard;
 
 /**
+ *
  * @author radioegor146
  */
 public class SimpleWindow implements IIncludable, IClickable {
 
     private final String title;
-    public boolean canExtend = true;
-    public boolean canPin = true;
     private int xPos;
     private int yPos;
     private boolean isOpen;
@@ -31,8 +25,13 @@ public class SimpleWindow implements IIncludable, IClickable {
     private int dragX;
     private int dragY;
     private boolean dragging;
+    public boolean canExtend = true;
+    public boolean canPin = true;
     private int width;
     private int height;
+    private int r = 96;
+    private int g = 96;
+    private int b = 96;
 
     public SimpleWindow(String title, int x, int y) {
         this.title = title;
@@ -63,6 +62,12 @@ public class SimpleWindow implements IIncludable, IClickable {
         }
     }
 
+    public void setColor(int r, int g, int b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+    }
+
     public void draw(int x, int y) {
         if (this.dragging) {
             this.windowDragged(x, y);
@@ -72,9 +77,9 @@ public class SimpleWindow implements IIncludable, IClickable {
                 EHacksClickGui.tooltip = null;
             }
 
-            int borderColor = GLUtils.getColor(96, 96, 96);
-            int backColor = GLUtils.getColor(128, 96, 96, 96);
-            int buttonColor = GLUtils.getColor(192, 96, 96, 96);
+            int borderColor = GLUtils.getColor(r, g, b);
+            int backColor = GLUtils.getColor(128, r, g, b);
+            int buttonColor = GLUtils.getColor(192, r, g, b);
 
             GLUtils.drawRect(this.xPos, this.yPos, this.xPos + width - 20, this.yPos + 12, backColor);
             GLUtils.drawRect(this.xPos + width - 20, this.yPos, this.xPos + width, this.yPos + 2, backColor);
@@ -185,25 +190,24 @@ public class SimpleWindow implements IIncludable, IClickable {
         this.height = cHeight + 15;
     }
 
-
     public boolean isExtended() {
         return this.isExtended;
-    }
-
-    public void setExtended(boolean flag) {
-        this.isExtended = flag;
     }
 
     public boolean isOpen() {
         return this.isOpen;
     }
 
+    public boolean isPinned() {
+        return !this.dragging && this.isPinned;
+    }
+
     public void setOpen(boolean flag) {
         this.isOpen = flag;
     }
 
-    public boolean isPinned() {
-        return !this.dragging && this.isPinned;
+    public void setExtended(boolean flag) {
+        this.isExtended = flag;
     }
 
     public void setPinned(boolean flag) {

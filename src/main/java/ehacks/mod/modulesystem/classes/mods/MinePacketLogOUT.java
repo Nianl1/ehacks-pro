@@ -7,14 +7,14 @@ import ehacks.mod.wrapper.ModuleCategory;
 import ehacks.mod.wrapper.PacketHandler;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 
-public class FMLProxyLogOUT extends Module {
-    public FMLProxyLogOUT() {
+public class MinePacketLogOUT extends Module {
+    public MinePacketLogOUT() {
         super(ModuleCategory.PACKETLOGGERS);
     }
 
     @Override
     public String getName() {
-        return "FMLProxyLogOUT";
+        return "MinePacketLogOUT";
     }
 
     @Override
@@ -29,7 +29,7 @@ public class FMLProxyLogOUT extends Module {
 
     @Override
     public String getModName() {
-        return "Forge";
+        return "Minecraft";
     }
 
     @Override
@@ -43,10 +43,8 @@ public class FMLProxyLogOUT extends Module {
             return true;
         }
 
-        if (packet instanceof FMLProxyPacket) {
-            FMLProxyPacket fmlPacket = (FMLProxyPacket) packet;
-
-            InteropUtils.log(String.format("Packet from channel %s", fmlPacket.channel()), "Packet" + side.toString());
+        if (!(packet instanceof FMLProxyPacket)) {
+            InteropUtils.log(packet.getClass().getName(), "Packet" + side.toString());
         }
         return true;
     }

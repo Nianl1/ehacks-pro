@@ -7,19 +7,19 @@ import ehacks.mod.wrapper.ModuleCategory;
 import ehacks.mod.wrapper.PacketHandler;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 
-public class FMLProxyLogOUT extends Module {
-    public FMLProxyLogOUT() {
+public class MinePacketLogIN extends Module {
+    public MinePacketLogIN() {
         super(ModuleCategory.PACKETLOGGERS);
     }
 
     @Override
     public String getName() {
-        return "FMLProxyLogOUT";
+        return "MinePacketLogIN";
     }
 
     @Override
     public String getDescription() {
-        return "Sends info about outcoming packets.";
+        return "Sends info about incoming packets.";
     }
 
     @Override
@@ -29,7 +29,7 @@ public class FMLProxyLogOUT extends Module {
 
     @Override
     public String getModName() {
-        return "Forge";
+        return "Minecraft";
     }
 
     @Override
@@ -39,14 +39,12 @@ public class FMLProxyLogOUT extends Module {
 
     @Override
     public boolean onPacket(Object packet, PacketHandler.Side side) {
-        if (side != PacketHandler.Side.OUT) {
+        if (side != PacketHandler.Side.IN) {
             return true;
         }
 
-        if (packet instanceof FMLProxyPacket) {
-            FMLProxyPacket fmlPacket = (FMLProxyPacket) packet;
-
-            InteropUtils.log(String.format("Packet from channel %s", fmlPacket.channel()), "Packet" + side.toString());
+        if (!(packet instanceof FMLProxyPacket)) {
+            InteropUtils.log(packet.getClass().getName(), "Packet" + side.toString());
         }
         return true;
     }

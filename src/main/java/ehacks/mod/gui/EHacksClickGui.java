@@ -7,6 +7,7 @@ import ehacks.mod.gui.element.SimpleWindow;
 import ehacks.mod.gui.window.WindowBeuHacks;
 import ehacks.mod.gui.window.WindowCheckVanish;
 import ehacks.mod.gui.window.WindowHub;
+import ehacks.mod.gui.window.WindowPacketLoggers;
 import ehacks.mod.util.GLUtils;
 import ehacks.mod.wrapper.Wrapper;
 import net.minecraft.client.gui.GuiScreen;
@@ -30,6 +31,7 @@ public class EHacksClickGui
     public void initWindows() {
         windows.add(new WindowCheckVanish());
         windows.add(new WindowBeuHacks());
+        windows.add(new WindowPacketLoggers());
         windows.add(new WindowHub());
     }
 

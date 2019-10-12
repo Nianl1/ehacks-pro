@@ -62,13 +62,11 @@ public class WindowCheckVanish
                 return;
             }
 
-            /*
-            if (tabList < lastCvResult || tabList < lastLpResult) {
-                super.setColor(255,0,0);
-            } else {
+            if ((tabList == lastCvResult) && (tabList == lastLpResult)) {
                 super.setColor(96,96,96);
+            } else {
+                super.setColor(255,0,0);
             }
-            */
 
             Wrapper.INSTANCE.fontRenderer().drawStringWithShadow("Server IP: " + serverData.serverIP, this.getClientX() + 1, this.getClientY() + 1, GLUtils.getColor(255, 255, 255));
             Wrapper.INSTANCE.fontRenderer().drawStringWithShadow("TAB-List: " + String.valueOf(tabList), this.getClientX() + 1, this.getClientY() + 13, GLUtils.getColor(255, 255, 255));

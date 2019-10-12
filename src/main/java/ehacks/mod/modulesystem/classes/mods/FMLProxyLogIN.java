@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 
 public class FMLProxyLogIN extends Module {
     public FMLProxyLogIN() {
-        super(ModuleCategory.BEUHACKS);
+        super(ModuleCategory.PACKETLOGGERS);
     }
 
     @Override
