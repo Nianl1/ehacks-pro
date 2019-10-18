@@ -2,7 +2,7 @@ package ehacks.mod.gui.window;
 
 import ehacks.mod.gui.element.SimpleWindow;
 import ehacks.mod.util.GLUtils;
-import ehacks.mod.util.ServerListPing17;
+import ehacks.mod.util.ServerListPing112;
 import ehacks.mod.util.packetquery.StatusResponse;
 import ehacks.mod.wrapper.Wrapper;
 import java.io.BufferedReader;
@@ -91,7 +91,7 @@ public class WindowCheckVanish
             }
             ServerAddress address = ServerAddress.fromString(serverData.serverIP);
             try {
-                ServerListPing17 pinger = new ServerListPing17();
+                ServerListPing112 pinger = new ServerListPing112();
                 //pinger.setAddress(new InetSocketAddress("n5.streamcraft.net", 25666));
                 pinger.setAddress(new InetSocketAddress(address.getIP(), address.getPort()));
                 StatusResponse response = pinger.fetchData();

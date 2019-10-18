@@ -15,7 +15,7 @@ import java.net.Socket;
 /**
  * @author zh32 <zh32 at zh32.de>
  */
-public class ServerListPing17 {
+public class ServerListPing112 {
 
     private final Gson gson = new Gson();
     private InetSocketAddress host;
@@ -110,8 +110,10 @@ public class ServerListPing17 {
             byte[] in = new byte[length];
             dataInputStream.readFully(in);  //read json string
             String json = new String(in);
+
+            System.out.println(json);
+
             response = gson.fromJson(json, StatusResponse.class);
-            response.setTime(0);
             dataOutputStream.close();
             outputStream.close();
             inputStreamReader.close();
