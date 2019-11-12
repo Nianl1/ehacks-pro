@@ -5,6 +5,8 @@ import ehacks.mod.api.Module;
 import ehacks.mod.util.InteropUtils;
 import ehacks.mod.wrapper.ModuleCategory;
 import ehacks.mod.wrapper.PacketHandler;
+import net.minecraft.network.play.server.SPacketKeepAlive;
+import net.minecraft.network.play.server.SPacketTimeUpdate;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 
 public class MinePacketLogIN extends Module {
@@ -40,6 +42,10 @@ public class MinePacketLogIN extends Module {
     @Override
     public boolean onPacket(Object packet, PacketHandler.Side side) {
         if (side != PacketHandler.Side.IN) {
+            return true;
+        }
+
+        if ((packet instanceof SPacketKeepAlive) || (packet instanceof SPacketTimeUpdate)) {
             return true;
         }
 
