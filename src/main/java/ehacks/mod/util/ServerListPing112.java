@@ -111,8 +111,6 @@ public class ServerListPing112 {
             dataInputStream.readFully(in);  //read json string
             String json = new String(in);
 
-            System.out.println(json);
-
             response = gson.fromJson(json, StatusResponse.class);
             dataOutputStream.close();
             outputStream.close();

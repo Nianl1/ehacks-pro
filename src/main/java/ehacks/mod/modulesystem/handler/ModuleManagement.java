@@ -26,6 +26,7 @@ public class ModuleManagement {
         this.add(new FMLProxyLogOUT());
         this.add(new MinePacketLogIN());
         this.add(new MinePacketLogOUT());
+        this.add(new PlayerSpotter());
 
         this.add(new MCFMDoorMat());
 
