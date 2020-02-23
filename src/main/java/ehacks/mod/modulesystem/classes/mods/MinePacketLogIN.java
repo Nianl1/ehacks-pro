@@ -5,8 +5,10 @@ import ehacks.mod.api.Module;
 import ehacks.mod.util.InteropUtils;
 import ehacks.mod.wrapper.ModuleCategory;
 import ehacks.mod.wrapper.PacketHandler;
+import net.minecraft.network.play.server.SPacketEntityProperties;
 import net.minecraft.network.play.server.SPacketKeepAlive;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
+import net.minecraft.network.play.server.SPacketUpdateHealth;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
 
 public class MinePacketLogIN extends Module {
@@ -45,7 +47,7 @@ public class MinePacketLogIN extends Module {
             return true;
         }
 
-        if ((packet instanceof SPacketKeepAlive) || (packet instanceof SPacketTimeUpdate)) {
+        if ((packet instanceof SPacketKeepAlive) || (packet instanceof SPacketTimeUpdate) || (packet instanceof SPacketEntityProperties) || (packet instanceof SPacketUpdateHealth)) {
             return true;
         }
 
